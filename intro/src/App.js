@@ -1,25 +1,34 @@
 import logo from './logo.svg';
 import './App.css';
-
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import {Container,Row,Col} from 'reactstrap';
+import CategoryList from './CategoryList';
+import ProductList from './ProductList';
+import Navi from './Navi';
+import { Component } from 'react';
+class App extends Component {
+  state={
+    selectedCategory:""
+  }
+  setSelectedItem = selectedItem => this.setState({selectedCategory:selectedItem})
+  render(){
+    return (
+      <div>
+        <Container>
+      <Row>
+        <Navi/>
+      </Row>
+      <Row>
+        <Col xs="3">
+          <CategoryList setSelectedItem={this.setSelectedItem} selectedCategory = {this.state.selectedCategory}/>
+        </Col>
+        <Col xs="9">
+          <ProductList selectedCategory = {this.state.selectedCategory}/>
+        </Col>
+      </Row>
+    </Container>
+      </div>
+    );
+  }
 }
 
 export default App;
