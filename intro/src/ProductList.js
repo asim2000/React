@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Table } from 'reactstrap'
 
 export default class ProductList extends Component {
+    
   render() {
     return (
       <div>
