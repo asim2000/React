@@ -17,10 +17,10 @@ export default class CategoryList extends Component {
   render() {
     return (
       <div>
-        {this.props.selectedCategory}
+        {this.props.selectedCategory.categoryName}
         <ListGroup>
             {this.state.categories.map(category=>{
-               return <ListGroupItem onClick={()=>this.props.setSelectedItem(category.categoryName)} key={category.id}>{category.categoryName}</ListGroupItem>
+               return <ListGroupItem onClick={()=>this.props.setSelectedCategory(category)} key={category.id}>{category.categoryName}</ListGroupItem>
             })}
         </ListGroup>
       </div>

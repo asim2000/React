@@ -6,68 +6,49 @@ export default class ProductList extends Component {
   render() {
     return (
       <div>
-        {this.props.selectedCategory}
         <Table
 >
   <thead>
     <tr>
       <th>
-        #
+        Id
       </th>
       <th>
-        First Name
+        Product Name
       </th>
       <th>
-        Last Name
+      QuantityPerUnit
       </th>
       <th>
-        Username
+      UnitPrice
+      </th>
+      <th>
+      UnitsInStock
       </th>
     </tr>
   </thead>
   <tbody>
-    <tr>
+    {
+        this.props.products.map(product => {
+           return <tr key={product.id}>
       <th scope="row">
-        1
+        {product.id}
       </th>
       <td>
-        Mark
+        {product.productName}
       </td>
       <td>
-        Otto
+        {product.quantityPerUnit}
       </td>
       <td>
-        @mdo
+        {product.unitPrice}
+      </td>
+      <td>
+        {product.unitsInStock}
       </td>
     </tr>
-    <tr>
-      <th scope="row">
-        2
-      </th>
-      <td>
-        Jacob
-      </td>
-      <td>
-        Thornton
-      </td>
-      <td>
-        @fat
-      </td>
-    </tr>
-    <tr>
-      <th scope="row">
-        3
-      </th>
-      <td>
-        Larry
-      </td>
-      <td>
-        the Bird
-      </td>
-      <td>
-        @twitter
-      </td>
-    </tr>
+        })
+    }
   </tbody>
 </Table>
       </div>

@@ -7,9 +7,25 @@ import Navi from './Navi';
 import { Component } from 'react';
 class App extends Component {
   state={
-    selectedCategory:""
+    selectedCategory:{},
+    products:[]
   }
-  setSelectedItem = selectedItem => this.setState({selectedCategory:selectedItem})
+  componentDidMount(){
+    this.getProducts();
+}
+getProducts = (categoryId) => {
+  let url = "http://localhost:3000/products";
+  if(categoryId) url += "?categoryId="+categoryId;
+    fetch(url)
+    .then(response=>response.json())
+    .then(data=>this.setState({products:data}));
+}
+  setSelectedCategory = selectedCategory => {
+    this.setState({
+      selectedCategory:selectedCategory,
+    });
+    this.getProducts(selectedCategory.id);
+  }
   render(){
     return (
       <div>
@@ -19,10 +35,10 @@ class App extends Component {
       </Row>
       <Row>
         <Col xs="3">
-          <CategoryList setSelectedItem={this.setSelectedItem} selectedCategory = {this.state.selectedCategory}/>
+          <CategoryList setSelectedCategory={this.setSelectedCategory} selectedCategory = {this.state.selectedCategory}/>
         </Col>
         <Col xs="9">
-          <ProductList selectedCategory = {this.state.selectedCategory}/>
+          <ProductList products = {this.state.products}/>
         </Col>
       </Row>
     </Container>
