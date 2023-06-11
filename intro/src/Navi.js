@@ -22,7 +22,7 @@ function Navi(props) {
           Link
         </NavLink>
       </NavItem>
-      <Cart dropdownOpen = {dropdownOpen} toggle = {toggle} cart = {props.cart}/>
+      <Cart dropdownOpen = {dropdownOpen} toggle = {toggle} cart = {props.cart}  removeFromCart = {props.removeFromCart}/>
       <NavItem>
         <NavLink href="#">Link</NavLink>
       </NavItem>
