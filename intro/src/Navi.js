@@ -1,56 +1,41 @@
 import React, { useState } from 'react';
 import {
-  Collapse,
-  Navbar,
-  NavbarToggler,
-  NavbarBrand,
   Nav,
   NavItem,
-  NavLink,
-  UncontrolledDropdown,
+  Dropdown,
+  DropdownItem,
   DropdownToggle,
   DropdownMenu,
-  DropdownItem,
-  NavbarText,
+  NavLink,
+  Badge,
 } from 'reactstrap';
+import Cart from './Cart';
+function Navi(props) {
+  const [dropdownOpen, setDropdownOpen] = useState(false);
 
-function Example(args) {
-  const [isOpen, setIsOpen] = useState(false);
-
-  const toggle = () => setIsOpen(!isOpen);
+  const toggle = () => setDropdownOpen(!dropdownOpen);
 
   return (
-    <div>
-      <Navbar {...args}>
-        <NavbarBrand href="/">reactstrap</NavbarBrand>
-        <NavbarToggler onClick={toggle} />
-        <Collapse isOpen={isOpen} navbar>
-          <Nav className="me-auto" navbar>
-            <NavItem>
-              <NavLink href="/components/">Components</NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink href="https://github.com/reactstrap/reactstrap">
-                GitHub
-              </NavLink>
-            </NavItem>
-            <UncontrolledDropdown nav inNavbar>
-              <DropdownToggle nav caret>
-                Options
-              </DropdownToggle>
-              <DropdownMenu right>
-                <DropdownItem>Option 1</DropdownItem>
-                <DropdownItem>Option 2</DropdownItem>
-                <DropdownItem divider />
-                <DropdownItem>Reset</DropdownItem>
-              </DropdownMenu>
-            </UncontrolledDropdown>
-          </Nav>
-          <NavbarText>Simple Text</NavbarText>
-        </Collapse>
-      </Navbar>
-    </div>
+    <Nav tabs>
+      <NavItem>
+        <NavLink href="#" active>
+          Link
+        </NavLink>
+      </NavItem>
+      <Cart dropdownOpen = {dropdownOpen} toggle = {toggle} cart = {props.cart}/>
+      <NavItem>
+        <NavLink href="#">Link</NavLink>
+      </NavItem>
+      <NavItem>
+        <NavLink href="#">Another Link</NavLink>
+      </NavItem>
+      <NavItem>
+        <NavLink disabled href="#">
+          Disabled Link
+        </NavLink>
+      </NavItem>
+    </Nav>
   );
 }
 
-export default Example;
+export default Navi;

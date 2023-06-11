@@ -17,10 +17,9 @@ export default class CategoryList extends Component {
   render() {
     return (
       <div>
-        {this.props.selectedCategory.categoryName}
         <ListGroup>
             {this.state.categories.map(category=>{
-               return <ListGroupItem onClick={()=>this.props.setSelectedCategory(category)} key={category.id}>{category.categoryName}</ListGroupItem>
+               return <ListGroupItem active = {category.id === this.props.selectedCategory.id} onClick={()=>this.props.setSelectedCategory(category)} key={category.id}>{category.categoryName}</ListGroupItem>
             })}
         </ListGroup>
       </div>
