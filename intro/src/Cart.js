@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { GiShoppingCart } from 'react-icons/gi'
 import { Alert, Badge, Button, Dropdown, DropdownItem, DropdownMenu, DropdownToggle } from 'reactstrap'
 import {RiDeleteBin6Line} from 'react-icons/ri'
+import { Link } from 'react-router-dom'
+import CartList from './CartList'
 
 export default class Cart extends Component {
   renderSummary = ()=> {
@@ -10,6 +12,9 @@ export default class Cart extends Component {
     <GiShoppingCart/>{this.props.cart.length}
     </DropdownToggle>
     <DropdownMenu>
+      <DropdownItem>
+        <Link to="/cart">Go to cart</Link>
+      </DropdownItem>
             {
               this.props.cart.map(item=>(
                 <DropdownItem key={item.product.id} header>

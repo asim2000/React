@@ -6,6 +6,10 @@ import ProductList from "./ProductList";
 import Navi from "./Navi";
 import { Component } from "react";
 import alertify from 'alertifyjs';
+import { Routes,Route } from "react-router-dom";
+import NotFound from "./NotFound";
+import CartList from "./CartList";
+import FormDemo from "./FormDemo";
 class App extends Component {
   state = {
     selectedCategory: {},
@@ -57,10 +61,21 @@ class App extends Component {
               />
             </Col>
             <Col xs="9">
-              <ProductList
-                products={this.state.products}
-                addToCart={this.addToCart}
-              />
+              <Routes>
+                <Route exact path="/" Component={()=>(
+                  <ProductList
+                  products={this.state.products}
+                  addToCart={this.addToCart}
+                />
+                )
+                  
+                }/>
+                <Route exact path="/cart" Component={()=>(
+                  <CartList cart={this.state.cart} removeFromCart={this.removeFromCart}/>
+                )}/>
+                <Route path="/form" Component={FormDemo}/>
+                <Route path="*" Component={NotFound}/>
+              </Routes>
             </Col>
           </Row>
         </Container>

@@ -10,6 +10,7 @@ import {
   Badge,
 } from 'reactstrap';
 import Cart from './Cart';
+import { Link } from 'react-router-dom';
 function Navi(props) {
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
@@ -18,13 +19,13 @@ function Navi(props) {
   return (
     <Nav tabs>
       <NavItem>
-        <NavLink href="#" active>
-          Link
+        <NavLink active>
+          <Link className='text-decoration-none' to="/">Home</Link>
         </NavLink>
       </NavItem>
       <Cart dropdownOpen = {dropdownOpen} toggle = {toggle} cart = {props.cart}  removeFromCart = {props.removeFromCart}/>
       <NavItem>
-        <NavLink href="#">Link</NavLink>
+        <NavLink href='#'><Link className='text-decoration-none' to="/form">Form</Link></NavLink>
       </NavItem>
       <NavItem>
         <NavLink href="#">Another Link</NavLink>
