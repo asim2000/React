@@ -6,7 +6,7 @@ export function changeCategory(category) {
         payload:category
     }
 }
-export function getCategoriesSuccess(categories) {
+function getCategoriesSuccess(categories) {
     return {
         type:actionTypes.GET_CATEGORIES_SUCCESS,
         payload:categories
