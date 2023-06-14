@@ -6,7 +6,7 @@ export function getProducts(category) {
         fetch(url)
         .then(response =>response.json())
         .then(result =>{
-            const newProducts = category ? result.filter(p=>p.categoryId === category.id) : result
+            const newProducts = category.id ? result.filter(p=>p.categoryId === category.id) : result
             dispatch(getProductsSuccess(newProducts))
         })
     }
